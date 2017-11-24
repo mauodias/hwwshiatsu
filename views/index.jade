@@ -5,66 +5,16 @@ block content
         a(href='admin' class='text-success text-center') 
             h1= title
         table(class='table table-striped table-hover')
-            tr(class='primary')
-                td 15:00
-                td Pinto
-            tr
-                td 15:30
-                td Maurício
-            tr
-                td 16:00
-                td    
-            tr
-                td 16:30
-                td 
-            tr
-                td 15:30
-                td Maurício
-            tr
-                td 16:00
-                td    
-            tr
-                td 16:30
-                td 
-            tr
-                td 15:30
-                td Maurício
-            tr
-                td 16:00
-                td    
-            tr
-                td 16:30
-                td 
-            tr(class='success')
-                td 15:00
-                td Pinto
-            tr
-                td 15:30
-                td Maurício
-            tr
-                td 16:00
-                td    
-            tr
-                td 16:30
-                td 
-            tr
-                td 15:30
-                td Maurício
-            tr
-                td 16:00
-                td    
-            tr
-                td 16:30
-                td 
-            tr
-                td 15:30
-                td Maurício
-            tr
-                td 16:00
-                td    
-            tr
-                td 16:30
-                td 
+            each row in data
+                tr
+                    td= row.horario
+                    td= row.nome
+                    if row.nome
+                        td
+                            a(href='/liberar/#{row.horario}' class='text-warning') Liberar
+                    else
+                        td
+                            
     div(class='footer navbar-fixed-bottom')
         button.btn.btn-default.btn-lg.btn-block(type='button', data-toggle='modal', data-target='#myModal') Marcar horário
         
@@ -80,8 +30,9 @@ block content
                     .modal-body
                         input(type='text' name='nome' placeholder='Nome' required)
                         select(name='horario' placeholder='Horario')
-                            option(value='13:00') 13:00
-                            option(value='13:30') 13:30
+                            each row in data
+                                if !row.nome 
+                                    option(value='#{row.horario}') #{row.horario}
                     |       
                     .modal-footer
                         input.btn.btn-default.btn-sm(type='submit', value='Marcar')
