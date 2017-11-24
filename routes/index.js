@@ -48,7 +48,7 @@ router.post('/marcar', function(req, res, next) {
 
 router.get('/liberar/:horario', function(req, res, next) {
     pool.getConnection(function(err, connection) {
-        connection.query(`UPDATE horarios SET nome="" WHERE horario="${req.params.horario}"`, function(error, rows, fields) {
+        connection.query(`UPDATE horarios SET nome=NULL WHERE horario="${req.params.horario}"`, function(error, rows, fields) {
             connection.release();
             if(!error){
                 res.redirect('/');
