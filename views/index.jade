@@ -1,0 +1,87 @@
+extends layout
+
+block content
+    div(class='container')
+        a(href='admin' class='text-success text-center') 
+            h1= title
+        table(class='table table-striped table-hover')
+            tr(class='primary')
+                td 15:00
+                td Pinto
+            tr
+                td 15:30
+                td Maurício
+            tr
+                td 16:00
+                td    
+            tr
+                td 16:30
+                td 
+            tr
+                td 15:30
+                td Maurício
+            tr
+                td 16:00
+                td    
+            tr
+                td 16:30
+                td 
+            tr
+                td 15:30
+                td Maurício
+            tr
+                td 16:00
+                td    
+            tr
+                td 16:30
+                td 
+            tr(class='success')
+                td 15:00
+                td Pinto
+            tr
+                td 15:30
+                td Maurício
+            tr
+                td 16:00
+                td    
+            tr
+                td 16:30
+                td 
+            tr
+                td 15:30
+                td Maurício
+            tr
+                td 16:00
+                td    
+            tr
+                td 16:30
+                td 
+            tr
+                td 15:30
+                td Maurício
+            tr
+                td 16:00
+                td    
+            tr
+                td 16:30
+                td 
+    div(class='footer navbar-fixed-bottom')
+        button.btn.btn-default.btn-lg.btn-block(type='button', data-toggle='modal', data-target='#myModal') Marcar horário
+        
+    #myModal.modal.fade(role='dialog')
+        .modal-dialog
+            .modal-content
+                form(action='/marcar',method='post' id='marcar')
+                    .modal-header
+                        button.close(type='button', data-dismiss='modal') &times;
+                        |         
+                        h4.modal-title Marcar horário
+                    |       
+                    .modal-body
+                        input(type='text' name='nome' placeholder='Nome' required)
+                        select(name='horario' placeholder='Horario')
+                            option(value='13:00') 13:00
+                            option(value='13:30') 13:30
+                    |       
+                    .modal-footer
+                        input.btn.btn-default.btn-sm(type='submit', value='Marcar')
